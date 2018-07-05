@@ -1,0 +1,12 @@
+/.idea/
+/target/
+/.gradle/
+
+*.iml
+*.class
+*.log
+*.jar
+*.war
+*.zip
+*.tar.gz
+*.rar

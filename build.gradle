@@ -1,0 +1,56 @@
+group 'com.richard.java.study'
+
+allprojects {
+    //所有模块都需要
+    apply plugin: 'java'
+    apply plugin: 'idea'
+
+    sourceCompatibility = 1.8
+
+    ext {
+        junitVersion = '4.12'
+        mysqlConnectorVersion = '5.1.44'
+        lombokVersion = '1.16.18'
+        guavaVersion = '25.1-jre'
+    }
+}
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+}
+
+dependencies {
+    compile "mysql:mysql-connector-java:$mysqlConnectorVersion"
+    compile "com.google.guava:guava:$guavaVersion"
+    compile "org.projectlombok:lombok:$lombokVersion"
+    //比如代码中调用JDK的JDBC接口，在运行时加载具体实现的jar
+    testRuntime "junit:junit:$junitVersion"
+}
+
+def createDir = {
+    path ->
+        File dir = new File(path)
+        if (!dir.exists()) {
+            dir.mkdirs()
+        }
+}
+
+//此处右键执行Run
+task makeDir() {
+    def paths = ['src/main/java', 'src/main/resources', 'src/test/java', 'src/test/resources']
+    doFirst {
+        paths.forEach(createDir)
+    }
+}
+
+task makeWebDir() {
+    //任务配置，要定义在动作执行前
+    dependsOn('makeDir')
+    def paths = ['src/main/webapp']
+    //任务执行
+    //doLast可以被<<替换
+    doLast {
+        paths.forEach(createDir)
+    }
+}
