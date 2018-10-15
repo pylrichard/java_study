@@ -1,4 +1,5 @@
-group 'com.richard.java.study'
+group 'com.richard'
+version '0.1.0'
 
 allprojects {
     //所有模块都需要
@@ -12,6 +13,7 @@ allprojects {
         mysqlConnectorVersion = '5.1.44'
         lombokVersion = '1.16.18'
         guavaVersion = '25.1-jre'
+        jodaVersion = '2.10'
     }
 }
 
@@ -24,8 +26,9 @@ dependencies {
     compile "mysql:mysql-connector-java:$mysqlConnectorVersion"
     compile "com.google.guava:guava:$guavaVersion"
     compile "org.projectlombok:lombok:$lombokVersion"
-    //比如代码中调用JDK的JDBC接口，在运行时加载具体实现的jar
-    testRuntime "junit:junit:$junitVersion"
+    compile "joda-time:joda-time:$jodaVersion"
+    //testRuntime表示代码中调用JDK的JDBC接口，在运行时加载具体实现的jar
+    testCompile "junit:junit:$junitVersion"
 }
 
 def createDir = {
