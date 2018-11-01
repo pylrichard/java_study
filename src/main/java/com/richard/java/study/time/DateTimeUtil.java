@@ -12,6 +12,10 @@ public class DateTimeUtil {
     public static final String PATTERN_YMDHMS = "yyyy-MM-dd HH:mm:ss";
     public static final String PATTERN_YMDHMSE = "yyyy-MM-dd HH:mm:ss EE";
 
+    public static Long getTimeByMinute(Long minute) {
+        return 1000 * 60 * minute;
+    }
+
     /**
      * 获取需要的DateTime
      */
