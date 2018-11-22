@@ -85,4 +85,16 @@ public class EnumTest {
         EnumSwitch.printName(Color.RED);
         EnumSwitch.printName(Color.GREEN);
     }
+
+    @Test
+    public void testCountByHashMap() {
+        MyEnumMap myEnumMap = new MyEnumMap();
+        myEnumMap.countByHashMap();
+    }
+
+    @Test
+    public void testCountByEnumMap() {
+        MyEnumMap myEnumMap = new MyEnumMap();
+        myEnumMap.countByEnumMap();
+    }
 }

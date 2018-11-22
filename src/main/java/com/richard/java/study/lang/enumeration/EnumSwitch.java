@@ -8,7 +8,8 @@ package com.richard.java.study.lang.enumeration;
 enum Color {
     GREEN,
     RED,
-    BLUE
+    BLUE,
+    YELLOW
 }
 
 public class EnumSwitch {
